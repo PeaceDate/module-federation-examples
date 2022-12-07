@@ -1,9 +1,10 @@
 name: "Cypress e2e test"
-on:
+on: 
   push:
-    branches: [ setup-ci ]
-  pull_request:
-    branches: [ setup-ci ]
+      branches:
+      - 'setup-ci'
 jobs:
-  cypressTest:
-        uses: ./.github/workflows/advanced-api-cypress-tests.yml
+  advancedApiTests-automaticVendorSharing:
+        uses: ./.github/workflows/advanced-api-automatic-vendor-sharing-cypress-tests.yml
+  advancedApiTests-dynamicReports:
+        uses: ./.github/workflows/advanced-api-dynamic-remotes-cypress-tests.yml
