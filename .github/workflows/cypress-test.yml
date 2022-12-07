@@ -1,0 +1,9 @@
+name: "Cypress e2e test"
+on:
+  push:
+    branches: [ setup-ci ]
+  pull_request:
+    branches: [ setup-ci ]
+jobs:
+  cypressTest:
+        uses: ./.github/workflows/advanced-api-cypress-tests.yml
