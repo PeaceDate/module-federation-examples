@@ -1,25 +1,23 @@
-name: "Cypress e2e test advanced API"
+name: "Cypress e2e test advanced API dymanic remotes"
 on: workflow_call
 jobs:
   cypress-run:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Build the App 1
-        run: cd advanced-api/dynamic-remotes/app1; yarn install; yarn start
+      - name: Install dependencies
+        uses: cypress-io/github-action@v5
+        with:
+          runTests: false
 
-      - name: Build the App 2
-        run: cd advanced-api/dynamic-remotes/app2; yarn install; yarn start
-
-      - name: Build the App 3
-        run: cd advanced-api/dynamic-remotes/app3; yarn install; yarn start
+      - name: Install Apps dependencies
+        run: cd advanced-api/dynamic-remotes; yarn install
 
       - name: Cypress tests
         uses: cypress-io/github-action@v5
         with:
-          wait-on: 'http://localhost:3001, http://localhost:3002'
-          browser: chrome
-          config-file: ./cypress/config/cypress.config.ts
-          spec: ./advanced-api/dynamic-remotes/e2e/*.cy.ts
+          install: false
+          working-directory: ./advanced-api/dynamic-remotes
+          command: yarn e2e:ci

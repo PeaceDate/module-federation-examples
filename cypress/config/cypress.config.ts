@@ -22,7 +22,7 @@ export default defineConfig({
     taskTimeout: 61000,
     watchForFileChanges: false,
     retries: {
-      runMode: 1,
+      runMode: 2,
     },
     env: {
       localhost3000: 'http://localhost:3000',

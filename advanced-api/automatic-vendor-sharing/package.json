@@ -10,6 +10,5 @@
   "devDependencies": {
     "lerna": "3.22.1",
     "wait-on": "^6.0.1"
-  },
-  "dependencies": {}
+  }
 }
