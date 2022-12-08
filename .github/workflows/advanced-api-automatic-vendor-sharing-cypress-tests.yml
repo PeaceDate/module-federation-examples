@@ -2,21 +2,22 @@ name: "Cypress e2e test advanced API"
 on: workflow_call
 jobs:
   cypress-run:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Build the App 1
-        run: cd advanced-api/automatic-vendor-sharing/app1; yarn install; yarn start
+      - name: Install dependencies
+        uses: cypress-io/github-action@v5
+        with:
+          runTests: false
 
-      - name: Build the App 2
-        run: cd advanced-api/automatic-vendor-sharing/app2; yarn install; yarn start
+      - name: Install Apps dependencies
+        run: cd advanced-api/automatic-vendor-sharing; yarn install
 
       - name: Cypress tests
         uses: cypress-io/github-action@v5
         with:
-          wait-on: 'http://localhost:3001, http://localhost:3002'
-          browser: chrome
-          config-file: ./cypress/config/cypress.config.ts
-          spec: ./advanced-api/automatic-vendor-sharing/e2e/*.cy.ts
+          install: false
+          working-directory: ./advanced-api/automatic-vendor-sharing
+          command: yarn e2e:ci

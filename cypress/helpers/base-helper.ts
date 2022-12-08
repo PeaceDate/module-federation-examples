@@ -1,5 +1,5 @@
-import moment from "moment";
-import { Dates } from "../types/dates";
+import moment from 'moment';
+import { Dates } from '../types/dates';
 
 export function getDateWithFormat(date: string, format: string): string {
   let days: number;

@@ -1,5 +1,5 @@
-import React, { ReactElement, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import React, { ReactElement, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 interface NavigationManagerProps {
   children: ReactElement;
@@ -18,17 +18,15 @@ export function NavigationManager({ children }: NavigationManagerProps) {
       navigate(pathname);
     }
 
-    window.addEventListener("[shell] navigated", shellNavigationHandler);
+    window.addEventListener('[shell] navigated', shellNavigationHandler);
 
     return () => {
-      window.removeEventListener("[shell] navigated", shellNavigationHandler);
+      window.removeEventListener('[shell] navigated', shellNavigationHandler);
     };
   }, [location]);
 
   useEffect(() => {
-    window.dispatchEvent(
-      new CustomEvent("[app1] navigated", { detail: location.pathname })
-    );
+    window.dispatchEvent(new CustomEvent('[app1] navigated', { detail: location.pathname }));
   }, [location]);
 
   return children;

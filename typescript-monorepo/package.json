@@ -9,6 +9,8 @@
   "devDependencies": {
     "lerna": "3.22.1"
   },
-  "workspaces": ["app1/*", "app2/*"]
-
+  "workspaces": [
+    "app1/*",
+    "app2/*"
+  ]
 }

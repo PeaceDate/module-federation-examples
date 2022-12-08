@@ -7,9 +7,9 @@ This project shows an example of using Webpack 5 Module Federation for Angular `
 Note the use of **yarn**, this is required to override the webpack version for the angular cli.
 
 For `react-user-list`:
+
 - Install packages: `yarn install`
 - Start: `yarn start`(the app uses port 3002)
-
 
 For `angular-profile`:
 
@@ -25,14 +25,14 @@ Ports could be changed in `webpack.config.js` files located in `react-user-list`
 
 - `angular-profile` app maintains the application state
 - `angular-profile` app includes a form for adding a new user
-- `react-user-list` app contains a table for user list visualizing with Remove button 
+- `react-user-list` app contains a table for user list visualizing with Remove button
 - `react-user-list` app calls a function to remove user from the app state after clicking Remove button
 - when user is removed from the store, both `angular-profile` app and `react-user-list` app
-see the changes.
+  see the changes.
 
 ## Tech details
 
-`react-user-list` uses `ModuleFederationPlugin` to expose `ListUserReactComponent`. The plugin is configured in `webpack.config.js` (see below).  
+`react-user-list` uses `ModuleFederationPlugin` to expose `ListUserReactComponent`. The plugin is configured in `webpack.config.js` (see below).
 
 ```js
 plugins: [
@@ -55,6 +55,7 @@ plugins: [
     }),
 ],
 ```
+
 `angular-profile` contains the shell application which is used to load remote Microfrontends using `loadRemoteModule` function. Appropriate code from `app.module.ts` is listed below.
 
 ```js
@@ -72,25 +73,25 @@ function initializeApp(): () => void {
 `ModuleFederationPlugin` required in the shell app as well. This configuration listed below.
 
 ```js
- plugins: [
-    new container.ModuleFederationPlugin({
-      name: 'profile',
-      filename: 'remoteEntry.js',
-      remotes: {
-        list_user: `list_user@http://localhost:3002/remoteEntry.js`,
+plugins: [
+  new container.ModuleFederationPlugin({
+    name: 'profile',
+    filename: 'remoteEntry.js',
+    remotes: {
+      list_user: `list_user@http://localhost:3002/remoteEntry.js`,
+    },
+    shared: {
+      react: {
+        singleton: true,
+        requiredVersion: deps.react,
       },
-      shared: {
-        react: {
-          singleton: true,
-          requiredVersion: deps.react,
-        },
-        'react-dom/client': {
-          singleton: true,
-          requiredVersion: deps['react-dom'],
-        },
+      'react-dom/client': {
+        singleton: true,
+        requiredVersion: deps['react-dom'],
       },
-    }),
-  ]
+    },
+  }),
+];
 ```
 
 React component is injected into `list-user.component.ts`. Here is a component loaded dynamically.
@@ -109,6 +110,7 @@ React component is injected into `list-user.component.ts`. Here is a component l
           });
       });
 ```
+
 Please, pay attention that a file like `decl.d.ts` is required into Angular app.
 
 ```js
@@ -123,6 +125,3 @@ These references might be usefull in addition to this project in case you are go
 2. https://github.com/module-federation/module-federation-examples/tree/master/angular11-microfrontends-ngxs
 3. https://thalava.com/how-to-use-react-web-components-in-angular
 4. https://medium.com/@zacky_14189/embedding-react-components-in-angular-the-easy-way-60f796b68aef
-
-
-

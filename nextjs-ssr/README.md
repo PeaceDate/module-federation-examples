@@ -1,6 +1,5 @@
 # Next.js with Module Federation
 
-
 ## Getting Started
 
 2. run `yarn start` and browse to `http://localhost:3001` or one of the others
@@ -8,7 +7,6 @@
 # We are available to consult
 
 Contact me <a href="mailto:zackary.l.jackson@gmail.com">zackary.l.jackson@gmail.com</a> or <a href="https://twitter.com/scriptedalchemy">@ScriptedAlchemy</a> on Twitter
-
 
 ## How it works?!
 
