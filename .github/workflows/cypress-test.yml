@@ -8,28 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - uses: dorny/paths-filter@v2
-      id: filter
-      with:
-        list-files: json
-        filters: |
-          added:
-            - added: "**"
-          deleted:
-            - deleted: "**"
-          modified:
-            - modified: "**"
-          any:
-            - added|deleted|modified: "*"
-
-    - name: Print 'added_files'
-      run: echo ${{steps.filter.outputs.added_files}}
-    - name: Print 'modified_files'
-      run: echo ${{steps.filter.outputs.modified_files}}
-    - name: Print 'deleted_files'
-      run: echo ${{steps.filter.outputs.deleted_files}}
-    - name: Print 'any'
-      run: echo ${{steps.filter.outputs.any_files}}
+    - name: changed-folders
+      run: bash ./changedFiles.sh
 
 #   advancedApiTests-automaticVendorSharing:
 #         uses: ./.github/workflows/advanced-api-automatic-vendor-sharing-cypress-tests.yml
