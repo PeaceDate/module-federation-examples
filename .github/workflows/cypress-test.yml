@@ -1,15 +1,30 @@
-name: "Cypress e2e test"
-on: 
-  push:
-      branches:
-      - 'setup-ci'
+name: "Test changed folders"
+on:
+  # Compare the last commit of master -> to the current commit of a PR branch. 
+  # (Note: To compare changes between the last pushed commit to the remote PR branch set `since_last_remote_commit: true`)
+  pull_request:
+    types:
+      - opened
+    branches:
+      - master
+
 jobs:
   tests:
     runs-on: ubuntu-latest
+    name: Test changed-files
     steps:
     - uses: actions/checkout@v3
-    - name: changed-folders
-      run: bash ./changedFiles.sh
+      with:
+        fetch-depth: 0
+
+    - name: Run changed-files with dir_names
+      id: changed-files-dir-names
+      uses: tj-actions/changed-files@v34
+      with:
+        since_last_remote_commit: true
+        json: true
+        dir_names: "true"
+        
 
 #   advancedApiTests-automaticVendorSharing:
 #         uses: ./.github/workflows/advanced-api-automatic-vendor-sharing-cypress-tests.yml
