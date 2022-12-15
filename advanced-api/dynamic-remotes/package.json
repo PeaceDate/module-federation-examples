@@ -1,6 +1,6 @@
 {
   "name": "@advanced-api/dynamic-remotes",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": false,
   "scripts": {
     "start": "lerna run --scope @dynamic-remotes/* --parallel start",
