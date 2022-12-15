@@ -1,15 +1,32 @@
-name: "Cypress e2e test"
-on: 
+name: "Test changed folders"
+on:
   push:
-      branches:
-      - 'setup-ci'
+    branches:
+      - setup-ci
+
 jobs:
   tests:
     runs-on: ubuntu-latest
+    name: Test changed-files
     steps:
     - uses: actions/checkout@v3
-    - name: changed-folders
-      run: bash ./changedFiles.sh
+      with:
+        fetch-depth: 0
+
+    - name: Run changed-files with dir_names
+      id: changed-files-dir-names
+      uses: tj-actions/changed-files@v34
+      env:
+       INPUT_TARGET_BRANCH: master
+      with:
+        since_last_remote_commit: true
+        json: true
+        dir_names: "true"
+       
+    - name: List all changed files
+      run: |
+        echo '${{ steps.changed-files-dir-names.all_changed_files }}'
+        
 
 #   advancedApiTests-automaticVendorSharing:
 #         uses: ./.github/workflows/advanced-api-automatic-vendor-sharing-cypress-tests.yml
