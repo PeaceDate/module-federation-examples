@@ -1,6 +1,6 @@
 import React from "react";
 import useReactRemoteTranslation from "./i18n/useReactRemoteTranslation";
-import i18nService from "i18next-shared-lib/lib/i18nService";
+import i18nService from "i18next-nextjs-react_shared-lib/lib/i18nService";
 
 export const Content = () => {
     const {t} = useReactRemoteTranslation('react-remote-main');

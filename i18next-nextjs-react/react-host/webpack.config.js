@@ -52,7 +52,7 @@ module.exports = {
             },
             exposes: {},
             shared: {
-                "i18next-shared-lib/": { // BEWARE THE TRAILING "/" !!
+                "i18next-nextjs-react_shared-lib/": { // BEWARE THE TRAILING "/" !!
                     singleton: true,
                 },
                 i18next: {

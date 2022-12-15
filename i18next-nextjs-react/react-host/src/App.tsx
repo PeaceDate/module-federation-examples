@@ -3,7 +3,7 @@ import {createRoot} from "react-dom/client";
 
 import "./index.css";
 import useReactHostTranslation from "../i18n/useReactHostTranslation";
-import i18nService from "i18next-shared-lib/lib/i18nService";
+import i18nService from "i18next-nextjs-react_shared-lib/lib/i18nService";
 
 const ReactRemoteContent = React.lazy(() => import('reactRemote/Content'));
 

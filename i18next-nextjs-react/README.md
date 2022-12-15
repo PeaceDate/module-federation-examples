@@ -10,7 +10,7 @@ This example is made of 4 packages :
 - Next-Host
 - React-Host
 - React-Remote
-- I18Next-Shared-lib
+- i18next-nextjs-react_shared-lib
 
 ## Next-Host
 This is a NextJS server, using a dedicated i18next instance for internationalization, showing a single button to change language.

@@ -412,6 +412,7 @@ export class BaseMethods {
             .type(text);
     }
 
+    
     private _checkInputValue(text: string, value: string, isLengthChecked: boolean = false): void {
         if(isLengthChecked) {
             expect(text.length).to.be.eq(value.length)
