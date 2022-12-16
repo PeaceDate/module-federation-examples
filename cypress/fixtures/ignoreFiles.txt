@@ -1,4 +1,4 @@
-.
-.github
+github
 cypress
 test
+e2e
