@@ -1,0 +1,44 @@
+name: "Cypress e2e test"
+on:
+  workflow_dispatch:
+    inputs:
+      branch_to_compare:
+        description: 'Branch to compare'
+        required: true
+        default: 'master'
+        type: choice
+        options:
+        - master
+        - setup-ci
+        - lerna-test
+  # Compare the last commit of master -> to the current commit of a PR branch. 
+  # (Note: To compare changes between the last pushed commit to the remote PR branch set `since_last_remote_commit: true`)
+#   pull_request:
+#     types: [opened, reopened]
+#     branches:
+#       - master
+
+jobs:
+  branch-to-compare-inputs:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "Branch to compare: $INPUT_TARGET_BRANCH"
+        env:
+          INPUT_TARGET_BRANCH: ${{ inputs.branch_to_compare }}
+
+  tests:
+    runs-on: ubuntu-latest
+    name: Test changed-files
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: Run changed-files with dir_names
+      id: changed-files-dir-names
+      uses: tj-actions/changed-files@v34
+      with:
+        since_last_remote_commit: true
+        json: true
+        dir_names: "true"
