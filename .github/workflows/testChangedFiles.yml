@@ -20,10 +20,5 @@ jobs:
       id: changed-files-dir-names
       uses: tj-actions/changed-files@v34
       with:
-        since_last_remote_commit: true
         json: true
         dir_names: "true"
-       
-    - name: List all changed files
-      run: |
-        echo '${{ steps.changed-files-dir-names.all_changed_files }}'
