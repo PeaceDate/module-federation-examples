@@ -25,10 +25,7 @@ jobs:
         dir_names: true
         dir_names_max_depth: 2
         json: true
-        files_ignore:
-          .
-          .github/
-          e2e
+        files_from_source_file: changed-files-list.txt
 
     - name: List all changed files
       run: |
