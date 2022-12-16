@@ -16,7 +16,8 @@
     "start": "webpack-cli serve",
     "build": "webpack --mode production",
     "serve": "serve dist -p 3002",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "e2e": "Test"
   },
   "dependencies": {
     "react": "^16.13.0",
