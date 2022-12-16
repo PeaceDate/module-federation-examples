@@ -1,0 +1,29 @@
+name: "Test changed folders"
+on:
+  push:
+    branches:
+      - temporary_master
+  pull_request:
+    branches:
+      - temporary_master
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    name: Test changed-files
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: Run changed-files with dir_names
+      id: changed-files-dir-names
+      uses: tj-actions/changed-files@v34
+      with:
+        since_last_remote_commit: true
+        json: true
+        dir_names: "true"
+       
+    - name: List all changed files
+      run: |
+        echo '${{ steps.changed-files-dir-names.all_changed_files }}'
