@@ -6,6 +6,8 @@
     "./advanced-api/automatic-vendor-sharing",
     "./advanced-api/automatic-vendor-sharing/*",
     "./advanced-api/dynamic-remotes",
-    "./advanced-api/dynamic-remotes/*"
+    "./advanced-api/dynamic-remotes/*",
+    "./vue3-demo",
+    "./vue3-demo/*"
   ]
 }

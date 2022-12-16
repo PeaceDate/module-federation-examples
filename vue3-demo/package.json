@@ -1,10 +1,12 @@
 {
+  "name": "@vue3-demo/root",
   "private": true,
   "scripts": {
     "start": "lerna run --scope @vue3-demo/* --parallel start",
     "build": "lerna run --scope @vue3-demo/* build",
     "serve": "lerna run --scope @vue3-demo/* --parallel serve",
-    "clean": "lerna run --scope @vue3-demo/* --parallel clean"
+    "clean": "lerna run --scope @vue3-demo/* --parallel clean",
+    "e2e:ci": "echo 'Run vue tests'"
   },
   "devDependencies": {
     "lerna": "3.22.1"
