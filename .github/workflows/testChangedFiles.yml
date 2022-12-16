@@ -21,4 +21,9 @@ jobs:
       with:
         json: true
         dir_names: "true"
-        
+
+    - name: List all changed files
+      run: |
+        for file in ${{ steps.cchanged-files-dir-names.outputs.all_changed_files }}; do
+          echo "$file was changed"
+        done
