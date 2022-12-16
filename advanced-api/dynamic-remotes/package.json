@@ -4,7 +4,8 @@
     "start": "lerna run --scope @dynamic-remotes/* --parallel start",
     "build": "lerna run --scope @dynamic-remotes/* build",
     "serve": "lerna run --scope @dynamic-remotes/* --parallel serve",
-    "clean": "lerna run --scope @dynamic-remotes/* --parallel clean"
+    "clean": "lerna run --scope @dynamic-remotes/* --parallel clean",
+    "e2e:ci": "echo 'Run Test'"
   },
   "devDependencies": {
     "lerna": "3.22.1"

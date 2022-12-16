@@ -12,7 +12,9 @@
   "workspaces": {
     "packages": [
       "./advanced-api/automatic-vendor-sharing",
-      "./advanced-api/automatic-vendor-sharing/*"
+      "./advanced-api/automatic-vendor-sharing/*",
+      "./advanced-api/dynamic-remotes",
+      "./advanced-api/dynamic-remotes/*"
     ],
     "nohoist": [
       "**/@types",
