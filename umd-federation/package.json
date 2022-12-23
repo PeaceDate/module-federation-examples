@@ -10,10 +10,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "workspaces": [
-    "app1",
-    "app2"
-  ],
   "devDependencies": {
     "lerna": "^4.0.0"
   }

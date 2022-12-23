@@ -3,13 +3,6 @@
   "version": "1.0.0",
   "description": "A Webpack Module Federation Case In React  ·",
   "main": "index.js",
-  "workspaces": {
-    "packages": [
-      "lib-app",
-      "component-app",
-      "main-app"
-    ]
-  },
   "scripts": {
     "start": "concurrently 'cd ./component-app && yarn start' 'cd ./lib-app && yarn start' 'cd ./main-app && yarn start'"
   },

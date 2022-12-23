@@ -8,7 +8,7 @@
     "start": "PORT=3002 next start"
   },
   "dependencies": {
-    "nextjs-shared": "*",
+    "nextjs_nextjs-shared": "*",
     "@module-federation/nextjs-mf": "5.5.0",
     "lodash": "4.17.21",
     "next": "12.2.2",

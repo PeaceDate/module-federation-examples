@@ -1,6 +1,6 @@
 {
   "name": "automatic-vendor-sharing",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "private": false,
   "scripts": {
     "start": "lerna run --scope=automatic-vendor-sharing_app* --parallel start",
@@ -11,7 +11,5 @@
   },
   "devDependencies": {
     "lerna": "3.22.1"
-  },
-  "dependencies": {},
-  "gitHead": "4c168f339d09d85543f33559c19356f93cb0e4c1"
+  }
 }

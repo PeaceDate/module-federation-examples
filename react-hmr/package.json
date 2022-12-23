@@ -6,13 +6,6 @@
   "repository": "https://github.com/burhanuday/module-federation-with-react",
   "author": "burhanuday",
   "license": "MIT",
-  "workspaces": {
-    "packages": [
-      "host",
-      "libs",
-      "remote1"
-    ]
-  },
   "scripts": {
     "start": "concurrently \"cd libs; yarn start\" \"cd remote1; yarn start\" \"cd host; yarn start\""
   },

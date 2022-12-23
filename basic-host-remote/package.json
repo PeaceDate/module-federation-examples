@@ -1,11 +1,5 @@
 {
   "name": "basic-host-remote",
-  "workspaces": {
-    "packages": [
-      "app1",
-      "app2"
-    ]
-  },
   "scripts": {
     "start": "lerna run --scope=basic-host-remote_app* --parallel start",
     "build": "lerna run --scope=basic-host-remote_app* --parallel build",

@@ -13,11 +13,20 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 0
-      - id: set-matrix    
+
+      - name: Install dependencies
         run: |
           yarn install --frozen-lockfile
+
+      - name: Create matrix
+        id: set-matrix    
+        run: |
           matrix="$(node check.js)"
-          echo "::set-output name=matrix::$matrix" 
+          echo "matrix=$matrix" >> $GITHUB_OUTPUT
+
+      - name: Changed files
+        run: |
+          echo '${{ steps.set-matrix.outputs.matrix }}'
      
 
   run-e2e-test:
@@ -27,7 +36,8 @@ jobs:
       fail-fast: false
       matrix: ${{fromJson(needs.cache.outputs.matrix)}}
     steps:
-      - uses: actions/checkout@v3
+      - name: Run Tests
+        uses: actions/checkout@v3
         with:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 0

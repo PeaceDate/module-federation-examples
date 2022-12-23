@@ -11,3 +11,4 @@ exec("npx lerna ls --since=origin/master --json", (error, stdout, stderr) => {
       console.error(e)
     }
 });
+  
