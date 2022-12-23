@@ -1,10 +1,35 @@
-name: Cypress tests
+name: Cypress e2e tests
 on: pull_request
 
 jobs:
 
+  check-if-brach-rebased:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
   cache:
     runs-on: ubuntu-latest
+    needs: check-if-brach-rebased
+    steps:
+      - uses: actions/checkout@v3
+
+  install-deps:
+    runs-on: ubuntu-latest
+    needs: cache
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+
+      - name: Install dependencies
+        run: |
+          yarn install --frozen-lockfile
+
+  setup-matrix:
+    runs-on: ubuntu-latest
+    needs: install-deps
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
@@ -14,9 +39,6 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 0
 
-      - name: Install dependencies
-        run: |
-          yarn install --frozen-lockfile
       - name: Create matrix
         id: set-matrix    
         run: |
@@ -25,14 +47,13 @@ jobs:
       - name: Changed files
         run: |
           echo '${{ steps.set-matrix.outputs.matrix }}'
-     
 
   run-e2e-test:
-    needs: cache
+    needs: setup-matrix
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      matrix: ${{fromJson(needs.cache.outputs.matrix)}}
+      matrix: ${{fromJson(needs.setup-matrix.outputs.matrix)}}
     steps:
       - name: Run Tests
         uses: actions/checkout@v3

@@ -1,7 +1,8 @@
 {
-  "name": "@dynamic-remotes-runtime-environment-variables/remote",
+  "name": "dynamic-remotes-runtime-environment-variables_remote",
   "version": "0.0.0",
   "private": true,
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "7.18.9",
     "@babel/preset-react": "7.18.6",
