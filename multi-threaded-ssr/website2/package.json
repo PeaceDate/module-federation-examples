@@ -1,5 +1,6 @@
 {
-  "name": "@multi-threaded-ssr/icarus-2",
+  "name": "multi-threaded-ssr_icarus-2",
+  "private": true,
   "description": "React architecture at scale",
   "version": "1.0.0",
   "main": "server/index.js",
@@ -55,8 +56,6 @@
     "@babel/plugin-syntax-import-meta": "7.10.4",
     "@babel/preset-env": "7.18.9",
     "@babel/preset-react": "7.18.6",
-    "@module-federation/remote-federation-plugin": "*",
-    "@module-federation/federated-runtime-plugin": "*",
     "autoprefixer": "10.4.12",
     "babel-eslint": "10.1.0",
     "babel-loader": "8.2.5",

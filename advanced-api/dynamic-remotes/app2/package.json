@@ -1,5 +1,5 @@
 {
-  "name": "@dynamic-remotes/app2",
+  "name": "dynamic-remotes_app2",
   "version": "0.0.0",
   "private": true,
   "devDependencies": {
@@ -19,8 +19,8 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
+    "moment": "^2.24.0",
     "react": "^16.13.0",
-    "react-dom": "^16.13.0",
-    "moment": "^2.24.0"
+    "react-dom": "^16.13.0"
   }
 }

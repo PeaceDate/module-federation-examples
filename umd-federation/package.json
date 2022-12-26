@@ -1,19 +1,15 @@
 {
-  "name": "umf-demo",
+  "name": "umd-federation",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "lerna run --parallel start"
+    "start": "lerna run --scope=umd-federation_app* --parallel start"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "workspaces": [
-    "app1",
-    "app2"
-  ],
   "devDependencies": {
     "lerna": "^4.0.0"
   }

@@ -1,6 +1,6 @@
 {
+  "name": "streamed-federation_federated-middleware",
   "private": true,
-  "name": "@streamed-federation/federated-middleware",
   "version": "1.0.0",
   "main": "index.js",
   "license": "CC BY-NC-ND 4.0",
@@ -16,7 +16,6 @@
     "express": "^4.17.1"
   },
   "devDependencies": {
-    "@module-federation/propriatery-tools": "git+ssh://git@github.com:module-federation/proprietary-tools.git",
     "@babel/core": "7.18.9",
     "babel-loader": "8.2.5",
     "copy-webpack-plugin": "9.1.0",

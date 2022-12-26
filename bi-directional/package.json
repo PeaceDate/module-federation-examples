@@ -1,15 +1,9 @@
 {
-  "private": true,
+  "name": "bi-directional",
   "scripts": {
     "start": "yarn build && yarn serve",
     "build": "concurrently \"cd app1; yarn build\" \"cd app2; yarn build\"",
     "serve": "concurrently \"cd app1; yarn serve\" \"cd app2; yarn serve\"",
     "clean": "concurrently \"cd app1; yarn clean\" \"cd app2; yarn clean\""
-  },
-  "workspaces": {
-    "packages": [
-      "./app1",
-      "./app2"
-    ]
   }
 }

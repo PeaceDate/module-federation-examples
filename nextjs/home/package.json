@@ -1,5 +1,5 @@
 {
-  "name": "home",
+  "name": "nextjs_home",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,7 +8,7 @@
     "start": "next start -p 3001"
   },
   "dependencies": {
-    "nextjs-shared": "*",
+    "nextjs_nextjs-shared": "*",
     "@module-federation/nextjs-mf": "5.5.0",
     "lodash": "4.17.21",
     "next": "12.2.2",

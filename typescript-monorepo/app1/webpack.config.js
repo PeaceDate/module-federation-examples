@@ -33,7 +33,7 @@ module.exports = {
     new ModuleFederationPlugin({
       name: '@typescript-monorepo/app1',
       remotes: {
-        "@typescript-monorepo/app2": `promise new Promise(resolve => {
+        "typescript-monorepo_app2": `promise new Promise(resolve => {
           const remoteUrlWithVersion = 'http://localhost:3002/remoteEntry.js'
           const script = document.createElement('script')
           script.src = remoteUrlWithVersion

@@ -2,7 +2,7 @@ import type {NextPage} from 'next';
 import useNextHostTranslation from "../i18n/useNextHostTranslation";
 import dynamic from "next/dynamic";
 const ReactRemoteContent = dynamic(() => import("reactRemote/Content"), {ssr: false});
-import i18nService from "i18next-shared-lib/lib/i18nService";
+import i18nService from "i18next-nextjs-react_shared-lib/lib/i18nService";
 
 console.log(__webpack_share_scopes__);
 setTimeout(() => console.log(__webpack_share_scopes__), 1000);

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const RemoteButton = React.lazy(() => import('@typescript-monorepo/app2/Button'));
+const RemoteButton = React.lazy(() => import('typescript-monorepo_app2/Button'));
 
 const App = () => (
   <div>

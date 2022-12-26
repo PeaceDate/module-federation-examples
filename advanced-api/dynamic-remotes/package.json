@@ -1,10 +1,14 @@
 {
-  "private": true,
+  "name": "dynamic-remotes",
+  "version": "0.0.0",
+  "private": false,
   "scripts": {
-    "start": "lerna run --scope @dynamic-remotes/* --parallel start",
-    "build": "lerna run --scope @dynamic-remotes/* build",
-    "serve": "lerna run --scope @dynamic-remotes/* --parallel serve",
-    "clean": "lerna run --scope @dynamic-remotes/* --parallel clean"
+    "start": "lerna run --scope=dynamic-remotes_app* --parallel start",
+    "build": "lerna run --scope=dynamic-remotes_app* build",
+    "serve": "lerna run --scope=dynamic-remotes_app* --parallel serve",
+    "clean": "lerna run --scope=dynamic-remotes_app* --parallel clean",
+    "e2e:ci": "echo 'Run tests'"
+    
   },
   "devDependencies": {
     "lerna": "3.22.1"
