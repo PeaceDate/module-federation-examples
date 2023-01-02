@@ -1,6 +1,8 @@
 {
-  "name": "mdmf-shared",
+  "name": "angular11-microfrontends-ngrx_mdmf-shared",
+  "private": true,
   "version": "0.0.1",
+  "license": "MIT",
   "peerDependencies": {
     "@angular/common": "^11.0.0-rc.2",
     "@angular/core": "^11.0.0-rc.2"
