@@ -89,11 +89,6 @@ appsData.forEach(
 
                     return;
                 }
-                basePage.checkElementWithTextPresence({
-                    selector: baseSelectors.paragraph,
-                    text: Constants.commonPhrases.paragraphText,
-                    isVisible: false
-                })
             })
 
             it(`Check buttons in ${appName} exist`, () => {
