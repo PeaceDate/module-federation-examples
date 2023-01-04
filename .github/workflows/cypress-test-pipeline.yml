@@ -84,22 +84,21 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 0
 
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
+      # - name: Get yarn cache directory path
+      #   id: yarn-cache-dir-path
+      #   run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
 
-      - name: Cache Yarn and Cypress
-        uses: actions/cache@v3
+      - name: Restore cache Yarn and Cypress
+        uses: actions/cache/restore@v3
         id: yarn-cache
         with:
           path: |
             **/node_modules
             ~/.cache/Cypress
             ${{ steps.yarn-cache-dir-path.outputs.dir }} 
-          key: ${{ runner.os }}-${{ matrix.container }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          key: e2e-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
-            ${{ runner.os }}-${{ matrix.container }}-yarn-
-            ${{ runner.os }}-${{ matrix.container }}-
+            e2e-${{ runner.os }}-
 
       - name: Install sample deps
         if: steps.yarn-cache.outputs.cache-hit != 'true'
