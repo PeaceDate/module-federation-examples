@@ -22,12 +22,17 @@ jobs:
         id: yarn-cache
         with:
           path: |
-            **/node_modules
+            node_modules
+            yarn.lock
+            */*/node_modules
+            */*/yarn.lock
             ~/.cache/Cypress
             ${{ steps.yarn-cache-dir-path.outputs.dir }} 
-          key: e2e-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          key: e2e-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
-            e2e-${{ runner.os }}-
+            e2e-yarn-
+            e2e-
+
       - name: Install deps
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: |
