@@ -1,8 +1,10 @@
 name: Cypress e2e tests - Cache for each
-on: pull_request
-# concurrency: 
-#   group: ${{ github.head_ref }}
-#   cancel-in-progress: true
+on: 
+  pull_request:
+    types:
+      - opened
+  schedule:
+    - cron:  '* * * * *'
 
 jobs:
 
