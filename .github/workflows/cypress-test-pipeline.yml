@@ -1,8 +1,8 @@
 name: Cypress e2e tests - Cache for each
 on: pull_request
-concurrency: 
-  group: ${{ github.head_ref }}
-  cancel-in-progress: true
+# concurrency: 
+#   group: ${{ github.head_ref }}
+#   cancel-in-progress: true
 
 jobs:
 
@@ -93,13 +93,16 @@ jobs:
         id: yarn-cache
         with:
           path: |
-            **/node_modules
+            node_modules
+            yarn.lock
+            */*/node_modules
+            */*/yarn.lock
             ~/.cache/Cypress
             ${{ steps.yarn-cache-dir-path.outputs.dir }} 
-          key: ${{ runner.os }}-${{ matrix.container }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          key: e2e-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
-            ${{ runner.os }}-${{ matrix.container }}-yarn-
-            ${{ runner.os }}-${{ matrix.container }}-
+            e2e-yarn-
+            e2e-
 
       - name: Install sample deps
         if: steps.yarn-cache.outputs.cache-hit != 'true'
