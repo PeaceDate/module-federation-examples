@@ -34,65 +34,69 @@ cypress
 ├── downloads (optional)
 ```
 
-`common` folder contains common files for the tests.
-- `base.ts` Here lies all methods that could be used in more than one test should be placed here.
-- `selectors.ts` All selectors/locators that used in tests.
+`common` - contains common files for the tests.
+- `base.ts` - all methods that could be used in more than one test should be placed here.
+- `selectors.ts` - all selectors/locators that used in tests.
 
-`config` folder contains configuration files for the Cypress itself.
+`config` - contains configuration files for the Cypress itself.
 
-`fixtures` folder contains files that are used in tests. Such as images, json constants, etc.
+`fixtures` - contains files that are used in tests. Such as images, json constants, etc.
 
-`helpers` folder contains helper methods for the tests. As an example, there is a method for generating data for the tests.
+`helpers` - contains helper methods for the tests. As an example, there is a method for generating data for the tests.
 
-`support` folder contains files that are loaded automatically before every test. Such as commands, plugins, etc.
+`support` - contains files that are loaded automatically before every test. Such as commands, plugins, etc.
 
-`types` folder contains types ( Interfaces, enums ) for the tests. As an example, there is a enums for the dates and css Values.
+`types` - contains types ( Interfaces, enums ) for the tests. As an example, there is a enums for the dates and css Values.
 
-`screenshots` folder contains screenshots of the failed runs. This folder is optional and can be removed or added to .gitignore.
+`screenshots` - contains screenshots of the failed runs. This folder is optional and can be removed or added to .gitignore.
 
-`videos` folder contains videos of the failed runs. This folder is optional and can be removed or added to .gitignore.
+`videos` - contains videos of the failed runs. This folder is optional and can be removed or added to .gitignore.
 
-`downloads` folder contains files that are downloaded during the tests. This folder is optional and can be removed or added to .gitignore.
+`downloads` - contains files that are downloaded during the tests. This folder is optional and can be removed or added to .gitignore.
 
-<h2 align="center">How to run tests</h2>
+## How to run tests
 
-All commands need to be run from the root of the project.
+> **Note:** All commands need to be run from the root of the project.
 
-### Run tests in interactive mode
+### Interactive mode
+
+To run tests in interactive mode, run:
 
 ```bash
 npm run cypress:debug
 ```
 
-It opens the Cypress Test Runner and allows you to run tests in interactive mode.
+It will open Cypress Test Runner and allow to run tests in interactive mode:
 
 ![Cypress test runner](https://i.ibb.co/yssCZZX/Screenshot-2023-01-11-at-13-34-32.png)
 
-First you need to choose the browser in which you want to run the tests. Then you can run the tests by clicking on the test name.
+First, сhoose the browser in which the tests should be ran. Then, run the tests by selecting the test name.
 (We setup Cypress to use `Chrome` browser by default)
 
-Then you can choose the test you want to run and simply click on it.
+Then, choose the test that needs to be ran by selecting it.
 
 ![Cypress test runner](https://i.ibb.co/FqFWmP6/Screenshot-2023-01-11-at-13-40-50.png)
 
-Here we go! Now you can see the test running in the browser.
+Here we go! Now the test is running in the browser.
 
 ![Cypress test runner](https://i.ibb.co/wJGQVtC/Screenshot-2023-01-11-at-13-43-41.png)
 
-To debug the test you can simply use build in browser dev tools. As example in `Chrome` you can use `F12` button. It allows you to open the dev tools and debug the test.
+To debug the test, use build in browser [dev tools](https://developer.chrome.com/docs/devtools/open/). It allows debugging the test.
 
 ![Console](https://i.ibb.co/rwQ9Zjm/Screenshot-2023-01-11-at-13-45-47.png)
 
-### Run tests in headless mode
+### Headless mode
+
+To run the tests in headless mode, run:
 
 ```bash
 npm run cypress:run
 ```
 
-It runs all tests in headless mode. It is useful for CI/CD. It generates screenshots and videos of the failed runs. You can find them in `cypress/screenshots` and `cypress/videos` folders. Also it generates `cypress/reports/mochawesome-report/mochawesome.html` file with the test results. You can open it in the browser to see the test results.
+It runs all tests in headless mode. It is useful for CI/CD. It generates screenshots and videos of the failed runs. Screenshots and videos can be found in `cypress/screenshots` directory and `cypress/videos` respectively. Also it generates `cypress/reports/mochawesome-report/mochawesome.html` file with the test run results. It can be opened via browser as a generic HTML file.
 
-After you run this command in Terminal you will see the test run started.
-This command will run all the tests and don't build or start the app. So you need to start the app manually before running this command and then run only that test that you need.
+After running following command in Terminal, the test run will start.
+This command will run all the tests and don't build or start the app. So it is neccessary to start the app manually before running the command, and then run only that test that needed.
 
 ```bash
 npx cypress run --config-file cypress/config/cypress.config.ts --browser=chrome --spec "path_to_test"
@@ -103,7 +107,7 @@ For example:
 npx cypress run --config-file cypress/config/cypress.config.ts --browser=chrome --spec "./advanced-api/automatic-vendor-sharing/e2e/*.cy.ts"
 ```
 
-For convenience in every sample added script wich build, start and run test in headless mode. You can easily run it by running this command:
+For convenience, there is a script in each sample, that builds, starts and runs test in headless mode. To run the script, use the following command:
 
 ```bash
 npx lerna run --scope="name_of_sample_in_sample_package.json" e2e:ci
@@ -111,29 +115,36 @@ npx lerna run --scope="name_of_sample_in_sample_package.json" e2e:ci
 ![Sample package.json name](https://i.ibb.co/Tgcgp1C/Screenshot-2023-01-11-at-14-00-51.png)
 
 For example:
+
 ```bash
 npx lerna run --scope=automatic-vendor-sharing e2e:ci
 ```
 
-This command will build the application wait on localhost start and then run the test. After that it will give you simple result of the test run and exit with the code 0 or 1. `0` means that all tests passed and `1` means that at least one test failed.
+This command will build the application, wait on localhost, start, and then run the test. After that it will provide a simple result of the test run and exit with the code 0 or 1. 
+
+>`0` means that all tests passed and `1` means that at least one test failed.
 
 ![Console](https://i.ibb.co/hHC5nN7/Screenshot-2023-01-11-at-14-08-29.png)
 
-Note: This command isn't stop the application after the test run. So you need to stop it manually by running this command:
+>**Note:** This command isn't stop the application after the test run. So it needs to be stopped manually by running the following command:
 
 ```bash
 kill -9 $(lsof -ti:port_you_need_to_kill)
 ```
 
 For example:
+
 ```bash
 kill -9 $(lsof -ti:3001)
 ```
 
-<h2 align="center">How to write tests</h2>
+## How to write tests
 
 ### Create a test
-First of all you need to create a test file. It should be placed in the `sample/e2e` folder. The name of the file should end with `.cy.ts` extension. Then in created file you need to import the `common` methods and `PageObject` for the test. As an example:
+
+First, create an empty test file. It should be placed in the `sample/e2e` directory. The name of the file should end with `.cy.ts` extension. Then, add import of the the `common` methods and `PageObject` for the test. 
+
+As an example:
 
 ```typescript
 import { BaseMethods } from '../../../cypress/common/base';
@@ -141,7 +152,7 @@ import { BaseMethods } from '../../../cypress/common/base';
 const basePage: BaseMethods = new BaseMethods()
 ```
 
-Create the describe (suite) for your test
+Create the describe (suite) for the test:
 
 ```typescript
 describe(`Example test`, () => {
@@ -151,7 +162,7 @@ describe(`Example test`, () => {
 
 Put `before` or `beforeEach` hook into `describe` block. It will be executed before every test (means `beforeEach`) or before all the tests (means `before`) in the suite.
 
-As exapmle our hook opens needed localhost before every test in the suite.
+As exapmle our hook opens needed localhost before every test in the suite:
 
 ```typescript
 describe(`Example test`, () => {
@@ -161,7 +172,7 @@ describe(`Example test`, () => {
 })
 ```
 
-And finnaly add you test case into the `describe` block by adding `it` block.
+And finnaly, add the test case into the `describe` block by adding `it` block:
 
 ```typescript
 describe(`Example test`, () => {
@@ -175,11 +186,11 @@ describe(`Example test`, () => {
 })
 ```
 
-You're done! 😃
+Voilà, it is done! 😃
 
-Note: Please use existing methods from `common` folder. If you need to add new method please add it to the `common` folder.
+>**Note:** Please use existing methods from `common` folder. If there is a need to add new method, please add it to the `common` folder.
 
-For example, how it test looks with usage of common methods that have already exist.
+An example of how this test will looks while using the common methods that already exist.
 
 ```typescript
 describe(`Example test`, () => {
@@ -195,21 +206,21 @@ describe(`Example test`, () => {
 
 ### Create methods
 
-If you need to create a new method you need to add it to the `common` folder. As an example you can use `base.ts` file.
+If there is a need to create a new method, add it to the `common` folder. Use `base.ts` file as an example.
 
-Note: Add methods to `base.ts` only if this method is used more than one sample.
+>**Note:** Add methods to `base.ts` only if this method is used more than in one sample.
 
 If it's not:
 
-Create a methods folder in `sample/e2e/` folder and create `methods.ts` file in it. Then add your method to the `methods.ts` file. It will give you ability to use this method only in the sample where you created it.
+Create a methods directory in `sample/e2e/` directory and create `methods.ts` file in it. Then add the method in quetsion to the `methods.ts` file. It will give an ability to use this method only in the sample where you created it.
 
-Note: Don't forget to import it in your test
+>**Note:** Don't forget to import it in the test:
 
 ```typescript
 import {ExampleMethods} from "../methods/methods";
 ```
 
-And then use it in your test
+And then use it in the test:
 
 ```typescript
 describe(`Example test`, () => {
@@ -223,7 +234,7 @@ describe(`Example test`, () => {
 })
 ```
 
-<h2 align="center">Best Practices & Rules</h2>
+## Best Practices & Rules
 
 ### File rules
 
@@ -237,7 +248,7 @@ describe(`Example test`, () => {
 
 For example, we have two or more elements on the page with similar names, tags and classes. But you need to get only one of them 😢
 
-There is you can use data-e2e attribute. It will help you to get the needed element. You need simply add `data-e2e` attribute to sample html or etc. 
+In this case, use data-e2e attribute. It will help to get the needed element. To do this, add `data-e2e` attribute to sample html or etc. 
 
 ```html
 <div class="form-group">
@@ -256,7 +267,8 @@ There is you can use data-e2e attribute. It will help you to get the needed elem
   </div>
 </div>
 ```
-And use it in your test
+
+And use it in the test
 
 ```typescript
 basePage.fillField({
@@ -273,10 +285,11 @@ For example:
 
 App1
 ![App1](https://i.ibb.co/26kNLXQ/Screenshot-2023-01-11-at-14-59-59.png)
+
 App2
 ![App2](https://i.ibb.co/tZGn3F0/Screenshot-2023-01-11-at-15-00-03.png)
 
-We have two apps `app1` and `app2` they are simillary. So we can create one object for both apps. And then use it in our tests.
+We have two apps `app1` and `app2` they are simillar. So we can create one object for both apps. And then use it in our tests:
 
 ```typescript
 const appsData = [
@@ -301,7 +314,7 @@ const appsData = [
 ]
 ```
 
-And then use it in our tests
+And then use it in our tests:
 
 ```typescript
 appsData.forEach(
@@ -338,9 +351,9 @@ It will generate two `describes` and two `its` for each tests and our test run w
 ![Test run](https://i.ibb.co/52525wC/Screenshot-2023-01-11-at-15-12-24.png)
 
 
-##### When more than one constant will be created
+##### When more than one constant needs to be created
 
-When you need to add new constant or change it and you know that app will be cantains more than one constant you should to create object for it
+When there is a need to add new constant, or change an existing one, and that app will contain more than one constant, create an object for it:
 
 For example:
 
@@ -360,7 +373,8 @@ testedAppsName: [
     }
 ]
 ```
-Then you can easily use it in your tests
+
+Then, use it in your tests:
 
 ```typescript
 import { BaseMethods } from '../../../cypress/common/base';
