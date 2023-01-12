@@ -26,8 +26,9 @@ jobs:
           fetch-depth: 0
 
       - name: Check if forked master is up to date
+        if: ${{ github.repositoryUrl }} == 'git://github.com/module-federation/module-federation-examples.git'
         run: |
-          echo "${{ github.event.repository.fork }}"
+          echo "${{ github.repositoryUrl }}"
           git remote add base https://github.com/${{github.repository}}
           git remote -v
           git fetch --all
