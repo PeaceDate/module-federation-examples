@@ -9,6 +9,15 @@
   },
   "devDependencies": {
     "lerna": "3.22.1",
-    "wait-on": "7.0.1"
+    "wait-on": "7.0.1",
+    "nx": "15.5.1",
+    "@nrwl/nx-cloud": "latest"
+  },
+  "dependencies": {
+    "automatic-vendor-sharing_app1": "file:./app1",
+    "automatic-vendor-sharing_app2": "file:./app2"
+  },
+  "nx": {
+    "implicitDependencies": ["cypress"]
   }
 }
