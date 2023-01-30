@@ -125,7 +125,7 @@ jobs:
         if: always()
         with:
           name: allure-results
-          path: '**/allure-results'
+          path: 'cypress/results/**/allure-results'
           retention-days: 7
 
   generate-allure-report:
@@ -164,7 +164,7 @@ jobs:
 
       - name: Generate Allure report
         run: |
-          npx allure generate **/allure-results --clean --output allure-report
+          npx allure generate cypress/results/**/allure-results --clean --output cypress/report/allure-report
       
       - name: Deploy report to FireBase 
         if: always()
