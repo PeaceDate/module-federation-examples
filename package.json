@@ -94,8 +94,7 @@
       "./nextjs-bi-directional/*",
       "./vue-cli/*",
       "./genesis/*",
-      "./umd-federation/*",
-      "./cypress"
+      "./umd-federation/*"
     ],
     "nohoist": [
       "**/@types",

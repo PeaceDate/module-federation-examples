@@ -143,6 +143,11 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: allure-results
+          path: cypress/results
+
+      - name: Check downloaded artifacts
+        run: |
+          ls -R
 
       - name: Restore cache
         uses: actions/cache/restore@v3
