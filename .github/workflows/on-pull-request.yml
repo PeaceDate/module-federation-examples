@@ -12,6 +12,25 @@ jobs:
         with:
           access_token: ${{ secrets.GITHUB_TOKEN }}
 
+# Save nessesary env variables to use them in next jobs
+  save-env:
+    runs-on: ubuntu-22.04
+    needs: stop-previous-run
+    steps:
+      - name: Save env variables
+        run: |
+          mkdir -p ./workflow
+          echo "${{ github.event.pull_request.number }}" > ./workflow/prNum
+          echo "${{ github.run_number }}" > ./workflow/runNum
+          echo "${{ github.run_id }}" > ./workflow/runId
+          echo "${{ github.event.pull_request.head.repo.full_name }}" > ./workflow/repoFullName
+          echo "${{ github.repository_owner }}" > ./workflow/ownerName
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: env_for_comment
+          path: workflow/
+
 # Check if forked master is up to date with origin master in module federation examples repo
   forked_master_status:
     runs-on: ubuntu-22.04
@@ -131,11 +150,12 @@ jobs:
         if: always()
         with:
           name: allure-results
-          path: 'cypress/results/**/allure-results'
+          path: 'cypress/results/allure-results'
           retention-days: 7
 
   generate-allure-report:
     runs-on: ubuntu-22.04
+    if: always()
     needs: run-e2e-test
     steps:
       - name: Checkout
@@ -166,11 +186,8 @@ jobs:
       - name: Allure Report action from marketplace
         uses: simple-elf/allure-report-action@master
         if: always()
-        id: allure-report
         with:
-          allure_results: cypress/results/**/allure-results
-          gh_pages: gh-pages
-          allure_report: allure-report
+          allure_results: cypress/results
           allure_history: allure-history
           keep_reports: 20
 
