@@ -51,7 +51,7 @@ appsData.forEach(
                 it(`Check ${appName} header and subheader exist on the page`, () => {
                     basePage.checkElementWithTextPresence({
                         selector: property.headerSelector,
-                        text: property.headerText
+                        text: property.subHeaderSelector
                     })
                     basePage.checkElementWithTextPresence({
                         selector: property.subHeaderSelector,
