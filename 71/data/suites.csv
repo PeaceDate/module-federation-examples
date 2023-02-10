@@ -1,0 +1,7 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Fri Feb 10 12:18:43 GMT 2023","Fri Feb 10 12:18:44 GMT 2023","440","Automatic Vendor Sharing","Check App 2","","","","Check App 2 header and subheader exist on the page",""
+"passed","Fri Feb 10 12:18:43 GMT 2023","Fri Feb 10 12:18:43 GMT 2023","0","Automatic Vendor Sharing","Check App 1","","","","Check button property in App 1",""
+"passed","Fri Feb 10 12:18:43 GMT 2023","Fri Feb 10 12:18:43 GMT 2023","0","Automatic Vendor Sharing","Check App 1","","","","Check buttons in App 1 exist",""
+"passed","Fri Feb 10 12:18:44 GMT 2023","Fri Feb 10 12:18:44 GMT 2023","326","Automatic Vendor Sharing","Check App 2","","","","Check buttons in App 2 exist",""
+"passed","Fri Feb 10 12:18:44 GMT 2023","Fri Feb 10 12:18:44 GMT 2023","292","Automatic Vendor Sharing","Check App 2","","","","Check button property in App 2",""
+"passed","Fri Feb 10 12:18:43 GMT 2023","Fri Feb 10 12:18:43 GMT 2023","2","Automatic Vendor Sharing","Check App 1","","","","Check App 1 header and subheader exist on the page",""
