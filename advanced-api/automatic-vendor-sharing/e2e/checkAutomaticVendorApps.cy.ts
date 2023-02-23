@@ -44,6 +44,7 @@ appsData.forEach(
 
         describe(`Automatic Vendor Sharing`, () => {
             context(`Check ${appName}`, () => {
+
                 beforeEach(() => {
                     basePage.openLocalhost(host)
                 })
